@@ -17,8 +17,19 @@ jobs:
           VERSION=$(grep -oP 'version \K\d+(\.\d+)+' change_log.txt)
           echo "Current version is $VERSION"
 
-          # Increment version number
-          NEW_VERSION=$(echo $VERSION | awk -F. '{$NF = ($(NF-1) == 9 ? 0 : $NF+1); $(NF-1) = ($(NF-1) == 9 ? $(NF-2)+1 : $(NF-1));} 1' | sed 's/ /./g')
+          # Parse version number into variables
+          IFS='.' read -ra VERSION_ARR <<< "$VERSION"
+          MAJOR=${VERSION_ARR[0]}
+          MINOR=${VERSION_ARR[1]}
+          PATCH=${VERSION_ARR[2]}
+
+          if [ "$MINOR" -ge 9 ]; then
+              MINOR=0
+              MAJOR=$((MAJOR + 1))
+          [ "$PATCH" -ge 9 ]; then
+              PATCH=0
+              MINOR=$((MINOR + 1))
+          fi
 
           # Replace old version number with new one
           sed -i "s/version $VERSION/version $NEW_VERSION/" change_log.txt
