@@ -17,7 +17,6 @@ jobs:
           sed -i "s/version .*/version $version/" change_log.txt
       - name: Commit changes
         run: |
-          version=$(date +'%Y.%m.%d')
           git config --global user.name "saha-bot"
           git config --global user.email "saha@github.com"
           git commit -a -m "Update version number to $version"
