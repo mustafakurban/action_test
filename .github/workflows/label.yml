@@ -22,7 +22,7 @@ jobs:
           echo "New version is $NEW_VERSION"
 
           # Replace old version number with new one
-          sed -i "s/version $VERSION/version $NEW_VERSION/" file.txt
+          sed -i "s/version $VERSION/version $NEW_VERSION/" change_log.txt
       - name: Commit changes
         run: |
           git config --global user.name "saha-bot"
