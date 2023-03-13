@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Update version number
         run: |
-          version=$(date +'%Y.%m.%d')
-          sed -i "s/version .*/version $version/" change_log.txt
+          version=$(date +'%Y.%m.%d') && \
+          sed -i.bak "s/version .*/version $version/" change_log.txt && \
       - name: Commit changes
         run: |
           git config --global user.name "GitHub Actions"
