@@ -24,6 +24,7 @@ jobs:
           # Replace old version number with new one
           sed -i "s/version $VERSION/version $NEW_VERSION/" change_log.txt
           
+          
           # commit changes
           git config --global user.name "saha-bot"
           git config --global user.email "saha@github.com"
