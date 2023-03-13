@@ -18,7 +18,7 @@ jobs:
           echo "Current version is $VERSION"
 
           # Increment version number
-          NEW_VERSION=$(echo $VERSION | awk -F. '{$NF = ($(NF-1)-1 == 9 ? $NF + 1 : $NF);} 1' | sed 's/ /./g')
+           NEW_VERSION=$(echo $VERSION | awk -F. '{$NF = ($(NF-1)-1 == 9 ? 0 : $NF+1); $(NF-1) = ($(NF-1)-1 == 9 ? $(NF-1)+1 : $(NF-1));} 1' | sed 's/ /./g')
           echo "New version is $NEW_VERSION"
 
           # Replace old version number with new one
