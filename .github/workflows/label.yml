@@ -27,7 +27,7 @@ jobs:
           # commit changes
           git config --global user.name "saha-bot"
           git config --global user.email "saha@github.com"
-          git commit -a -m "Update version number to $VERSION"
+          git commit -a -m "Update version number to $NEW_VERSION"
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
