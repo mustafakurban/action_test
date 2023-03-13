@@ -13,8 +13,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Update version number
         run: |
-          version=$(date +'%Y.%m.%d') 
-          sed -i "s/version .*/version $version/" change_log.txt 
+          version=$(date +'%Y.%m.%d')
+          sed -i "s/version .*/version $version/" change_log.txt
       - name: Commit changes
         run: |
           git config --global user.name "GitHub Actions"
@@ -23,4 +23,5 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
+          branch: mustafa
           github_token: ${{ secrets.GITHUB_TOKEN }}
