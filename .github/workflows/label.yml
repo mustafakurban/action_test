@@ -26,6 +26,8 @@ jobs:
           if [ "$MINOR" -ge 9 ]; then
               MINOR=0
               MAJOR=$((MAJOR + 1))
+          fi
+          
           if [ "$PATCH" -ge 9 ]; then
               PATCH=0
               MINOR=$((MINOR + 1))
